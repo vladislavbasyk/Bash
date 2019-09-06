@@ -1,0 +1,18 @@
+#! /bin/bash
+echo -e "Для создания пользвателя напишите add для удаления del: "
+read deladd
+    if [ $deladd = add ]
+        then
+        echo -e "Введите имя пользователя: "
+        read username
+        ssh vlad@192.168.56.30 "sudo adduser --force-badname $username"
+        ssh vlad@192.168.56.30 "sudo usermod -aG sudo $username"
+        ssh vlad@192.168.56.30 "sudo usermod -aG sudo $username"
+    elif [ $deladd = del ]
+        then
+        echo -e "Введите имя пользователя: "
+        read username 
+        ssh vlad@192.168.56.30 "sudo deluser --remove-home $username"
+    else
+        echo -e "Не правильный формат ввода"
+        fi
